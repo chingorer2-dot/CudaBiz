@@ -1,20 +1,36 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# CudaBiz System Documentation
 
-# Run and deploy your AI Studio app
+## Overview
+CudaBiz is a cutting-edge system designed to optimize and manage business operations using CUDA technology.
 
-This contains everything you need to run your app locally.
+## Features
+- **High Performance:** Utilizes GPU acceleration to enhance processing speed.
+- **Scalability:** Easily adapts to growing data needs and user volumes.
+- **User-Friendly Interface:** Intuitive design for straightforward navigation and operation.
+- **Comprehensive Analytics:** Provides extensive reporting and insights.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1vQaTnpK1cY-dCozoeYgsozAVewCypMRQ
+## Setup Instructions
+1. **Requirements:**
+   - CUDA compatible GPU.
+   - Install NVIDIA drivers.
+   - Set up the development environment according to the specifications in the installation guide.
 
-## Run Locally
+2. **Installation Steps:**
+   - Clone the repository: `git clone https://github.com/chingorer2-dot/CudaBiz`
+   - Navigate to the project directory: `cd CudaBiz`
+   - Compile the project using the provided Makefile.
 
-**Prerequisites:**  Node.js
+3. **Running CudaBiz:**
+   - Execute the binary generated after compilation.
+   - Follow the on-screen instructions to configure the system.
 
+## System Architecture
+- **Overview:** CudaBiz is built on a microservices architecture that leverages GPU computing.
+- **Components:**
+  - **Frontend:** React-based user interface for configuration and monitoring.
+  - **Backend:** Node.js services that handle business logic and interact with the database.
+  - **Database:** Stores application state, user data, and analytics reports.
+- **Communication:** Services communicate via REST API and WebSockets for real-time updates.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Conclusion
+CudaBiz streamlines business operations by using advanced computational techniques to enhance overall efficiency. Stay tuned for upcoming features and updates!
