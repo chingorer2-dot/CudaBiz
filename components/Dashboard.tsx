@@ -94,8 +94,8 @@ const Dashboard: React.FC<DashboardProps> = ({ state, setState, onNavigate }) =>
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">Balanço da Sessão Atual</h2>
-          <p className="text-slate-500">
+          <h2 className="text-2xl font-bold text-white">Balanço da Sessão Atual</h2>
+          <p className="text-slate-400">
             {stats.lastClosureDate.getTime() === 0 
               ? 'Acompanhe as vendas em tempo real.' 
               : `Desde o último encerramento (${stats.lastClosureDate.toLocaleString('pt-PT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })})`}
@@ -107,8 +107,8 @@ const Dashboard: React.FC<DashboardProps> = ({ state, setState, onNavigate }) =>
             disabled={stats.salesCount === 0 && stats.totalQtyIn === 0}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-colors shadow-lg ${
               (stats.salesCount === 0 && stats.totalQtyIn === 0) 
-              ? 'bg-slate-200 text-slate-400 cursor-not-allowed' 
-              : 'bg-slate-900 text-white hover:bg-slate-800'
+              ? 'bg-slate-800 text-slate-600 cursor-not-allowed' 
+              : 'bg-indigo-600 text-white hover:bg-indigo-700'
             }`}
           >
             <CalendarCheck size={18} />
@@ -118,111 +118,112 @@ const Dashboard: React.FC<DashboardProps> = ({ state, setState, onNavigate }) =>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+        <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-sm">
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+            <div className="p-3 bg-indigo-900/30 text-indigo-400 rounded-xl">
               <DollarSign size={24} />
             </div>
             <div>
-              <p className="text-sm font-medium text-slate-500">Vendas da Sessão</p>
-              <h3 className="text-2xl font-bold text-slate-900">{stats.totalSession.toFixed(2)} MT</h3>
+              <p className="text-sm font-medium text-slate-400">Vendas da Sessão</p>
+              <h3 className="text-2xl font-bold text-white">{stats.totalSession.toFixed(2)} MT</h3>
             </div>
           </div>
-          <div className="flex items-center text-xs text-slate-400 font-medium">
+          <div className="flex items-center text-xs text-slate-500 font-medium">
             {stats.salesCount} transações nesta jornada
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+        <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-sm">
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+            <div className="p-3 bg-emerald-900/30 text-emerald-400 rounded-xl">
               <TrendingUp size={24} />
             </div>
             <div>
-              <p className="text-sm font-medium text-slate-500">Lucro Acumulado</p>
-              <h3 className="text-2xl font-bold text-slate-900">{stats.profitSession.toFixed(2)} MT</h3>
+              <p className="text-sm font-medium text-slate-400">Lucro Acumulado</p>
+              <h3 className="text-2xl font-bold text-white">{stats.profitSession.toFixed(2)} MT</h3>
             </div>
           </div>
-          <div className="flex items-center text-xs text-emerald-600 font-medium">
+          <div className="flex items-center text-xs text-emerald-500 font-medium">
             Lucro das vendas atuais
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+        <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-sm">
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
+            <div className="p-3 bg-blue-900/30 text-blue-400 rounded-xl">
               <ArrowUpCircle size={24} />
             </div>
             <div>
-              <p className="text-sm font-medium text-slate-500">Entrada Stock</p>
-              <h3 className="text-2xl font-bold text-slate-900">{stats.totalQtyIn} <span className="text-sm font-normal text-slate-400">un.</span></h3>
+              <p className="text-sm font-medium text-slate-400">Entrada Stock</p>
+              <h3 className="text-2xl font-bold text-white">{stats.totalQtyIn} <span className="text-sm font-normal text-slate-500">un.</span></h3>
             </div>
           </div>
-          <div className="text-xs text-blue-600 font-medium">Produtos repostos na sessão</div>
+          <div className="text-xs text-blue-500 font-medium">Produtos repostos na sessão</div>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+        <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-sm">
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-3 bg-orange-50 text-orange-600 rounded-xl">
+            <div className="p-3 bg-orange-900/30 text-orange-400 rounded-xl">
               <ArrowDownCircle size={24} />
             </div>
             <div>
-              <p className="text-sm font-medium text-slate-500">Saída Stock</p>
-              <h3 className="text-2xl font-bold text-slate-900">{stats.totalQtyOut} <span className="text-sm font-normal text-slate-400">un.</span></h3>
+              <p className="text-sm font-medium text-slate-400">Saída Stock</p>
+              <h3 className="text-2xl font-bold text-white">{stats.totalQtyOut} <span className="text-sm font-normal text-slate-500">un.</span></h3>
             </div>
           </div>
-          <div className="text-xs text-orange-600 font-medium">Itens vendidos na sessão</div>
+          <div className="text-xs text-orange-500 font-medium">Itens vendidos na sessão</div>
         </div>
       </div>
 
       {showClosureModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl w-full max-w-md shadow-2xl p-8 space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl p-8 space-y-6 border border-slate-800">
             <div className="text-center">
-              <div className="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mx-auto text-indigo-600 mb-4">
+              <div className="w-16 h-16 bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto text-indigo-400 mb-4">
                 <CalendarCheck size={32} />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">Encerrar e Arquivar</h3>
-              <p className="text-slate-500 mt-2">Deseja arquivar os totais desta sessão? O sistema iniciará automaticamente uma nova contagem, mantendo o stock atualizado.</p>
+              <h3 className="text-2xl font-bold text-white">Encerrar e Arquivar</h3>
+              <p className="text-slate-400 mt-2">Deseja arquivar os totais desta sessão? O sistema iniciará automaticamente uma nova contagem, mantendo o stock atualizado.</p>
             </div>
 
-            <div className="bg-slate-50 rounded-2xl p-4 space-y-3">
+            <div className="bg-slate-800 rounded-2xl p-4 space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-slate-500">Vendas Totais</span>
-                <span className="font-bold text-slate-900">{stats.totalSession.toFixed(2)} MT</span>
+                <span className="text-slate-400">Vendas Totais</span>
+                <span className="font-bold text-white">{stats.totalSession.toFixed(2)} MT</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-slate-500">Lucro Total</span>
-                <span className="font-bold text-emerald-600">{stats.profitSession.toFixed(2)} MT</span>
+                <span className="text-slate-400">Lucro Total</span>
+                <span className="font-bold text-emerald-400">{stats.profitSession.toFixed(2)} MT</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-slate-500">Itens Vendidos</span>
-                <span className="font-bold text-slate-900">{stats.totalQtyOut} un.</span>
+                <span className="text-slate-400">Itens Vendidos</span>
+                <span className="font-bold text-white">{stats.totalQtyOut} un.</span>
               </div>
             </div>
 
             <div className="flex gap-4">
-              <button onClick={() => setShowClosureModal(false)} className="flex-1 py-3 text-sm font-bold text-slate-500">Cancelar</button>
-              <button onClick={handleCloseDay} className="flex-1 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition-colors">Confirmar e Abrir Novo Dia</button>
+              <button onClick={() => setShowClosureModal(false)} className="flex-1 py-3 text-sm font-bold text-slate-500 hover:text-slate-300">Cancelar</button>
+              <button onClick={handleCloseDay} className="flex-1 py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors">Confirmar e Abrir Novo Dia</button>
             </div>
           </div>
         </div>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+        <div className="lg:col-span-2 bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-bold text-slate-900 text-lg">Evolução de Vendas (7 Dias)</h3>
+            <h3 className="font-bold text-white text-lg">Evolução de Vendas (7 Dias)</h3>
           </div>
           <div className="h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1e293b" />
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fontSize: 12, fill: '#64748b'}} />
                 <YAxis axisLine={false} tickLine={false} tick={{fontSize: 12, fill: '#64748b'}} />
                 <Tooltip 
-                  cursor={{fill: '#f8fafc'}}
-                  contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
+                  cursor={{fill: '#1e293b'}}
+                  contentStyle={{ backgroundColor: '#0f172a', borderRadius: '12px', border: '1px solid #1e293b', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.5)' }}
+                  itemStyle={{ color: '#f8fafc' }}
                 />
                 <Bar dataKey="vendas" fill="#6366f1" radius={[4, 4, 0, 0]} barSize={24} />
                 <Bar dataKey="lucro" fill="#10b981" radius={[4, 4, 0, 0]} barSize={24} />
@@ -231,23 +232,23 @@ const Dashboard: React.FC<DashboardProps> = ({ state, setState, onNavigate }) =>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-          <h3 className="font-bold text-slate-900 text-lg mb-6">Histórico de Encerramentos</h3>
+        <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-sm">
+          <h3 className="font-bold text-white text-lg mb-6">Histórico de Encerramentos</h3>
           <div className="space-y-4">
             {state.closures.length === 0 ? (
-              <p className="text-center text-slate-400 py-8 text-sm italic">Nenhum arquivamento realizado.</p>
+              <p className="text-center text-slate-500 py-8 text-sm italic">Nenhum arquivamento realizado.</p>
             ) : (
               [...state.closures].sort((a,b) => new Date(b.closedAt).getTime() - new Date(a.closedAt).getTime()).slice(0, 5).map((closure) => (
-                <div key={closure.id} className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
+                <div key={closure.id} className="p-3 bg-slate-800 rounded-xl border border-slate-700 space-y-1">
                   <div className="flex justify-between items-center">
                     <span className="text-xs font-bold text-slate-500">
                       {new Date(closure.closedAt).toLocaleString('pt-PT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-bold uppercase">Arquivado</span>
+                    <span className="text-[10px] text-slate-500 font-bold uppercase">Arquivado</span>
                   </div>
                   <div className="flex justify-between items-end">
-                    <span className="text-lg font-black text-slate-900">{closure.totalSales.toFixed(2)} MT</span>
-                    <span className="text-xs font-bold text-emerald-600">+{closure.totalProfit.toFixed(2)} MT</span>
+                    <span className="text-lg font-black text-white">{closure.totalSales.toFixed(2)} MT</span>
+                    <span className="text-xs font-bold text-emerald-400">+{closure.totalProfit.toFixed(2)} MT</span>
                   </div>
                 </div>
               ))

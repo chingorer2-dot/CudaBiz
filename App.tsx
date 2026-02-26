@@ -21,7 +21,7 @@ import SettingsPage from './components/SettingsPage';
 import HistoryPage from './components/HistoryPage';
 import ReportsPage from './components/ReportsPage';
 
-const ACTIVATION_CODE = 'lucia86&@.com';
+const ACTIVATION_CODE = 'lucia86&@';
 
 const App: React.FC = () => {
   const [state, setState] = useState<AppState>(loadState());
@@ -65,21 +65,21 @@ const App: React.FC = () => {
 
   if (!isActivated) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
-        <div className="bg-white rounded-3xl w-full max-w-md p-8 shadow-2xl text-center space-y-8 animate-in fade-in zoom-in duration-300">
-          <div className="w-20 h-20 bg-indigo-600 rounded-2xl mx-auto flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+      <div className="min-h-screen bg-black flex items-center justify-center p-4">
+        <div className="bg-slate-900 rounded-3xl w-full max-w-md p-8 shadow-2xl text-center space-y-8 animate-in fade-in zoom-in duration-300 border border-slate-800">
+          <div className="w-20 h-20 bg-indigo-600 rounded-2xl mx-auto flex items-center justify-center text-white shadow-lg shadow-indigo-900/20">
             <Lock size={40} />
           </div>
           <div>
-            <h1 className="text-2xl font-black text-slate-900">CudaBiz Ativação</h1>
-            <p className="text-slate-500 mt-2">Introduza o código de ativação do desenvolvedor para aceder ao sistema.</p>
+            <h1 className="text-2xl font-black text-white">CudaBiz Ativação</h1>
+            <p className="text-slate-400 mt-2">Introduza o código de ativação do desenvolvedor para aceder ao sistema.</p>
           </div>
           <form onSubmit={handleActivation} className="space-y-4">
             <div>
               <input 
                 type="password"
                 placeholder="Código de Ativação"
-                className={`w-full bg-slate-50 border-2 rounded-xl px-4 py-3 text-center text-lg font-bold focus:outline-none transition-all ${activationError ? 'border-rose-500 bg-rose-50 animate-shake' : 'border-slate-100 focus:border-indigo-600'}`}
+                className={`w-full bg-slate-800 border-2 rounded-xl px-4 py-3 text-center text-lg font-bold text-white focus:outline-none transition-all ${activationError ? 'border-rose-500 bg-rose-950/20 animate-shake' : 'border-slate-700 focus:border-indigo-600'}`}
                 value={activationInput}
                 onChange={(e) => {
                   setActivationInput(e.target.value);
@@ -88,43 +88,43 @@ const App: React.FC = () => {
               />
               {activationError && <p className="text-rose-500 text-xs font-bold mt-2 uppercase tracking-tight">Código Incorreto</p>}
             </div>
-            <button type="submit" className="w-full bg-indigo-600 text-white py-4 rounded-xl font-black shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all">ATIVAR SISTEMA</button>
+            <button type="submit" className="w-full bg-indigo-600 text-white py-4 rounded-xl font-black shadow-lg shadow-indigo-900/20 hover:bg-indigo-700 active:scale-95 transition-all">ATIVAR SISTEMA</button>
           </form>
-          <div className="pt-4 text-[10px] text-slate-400 font-medium uppercase tracking-widest">© 2024 CudaBiz Management System</div>
+          <div className="pt-4 text-[10px] text-slate-500 font-medium uppercase tracking-widest">© 2024 CudaBiz Management System</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex h-screen bg-slate-50 overflow-hidden">
+    <div className="flex h-screen bg-black text-white overflow-hidden">
       <div className="lg:hidden fixed top-4 left-4 z-50 print:hidden">
         <button onClick={toggleSidebar} className="p-2 bg-indigo-600 text-white rounded-lg shadow-lg">
           {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-200 transform transition-transform duration-200 ease-in-out lg:relative lg:translate-x-0 print:hidden ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-slate-900 border-r border-slate-800 transform transition-transform duration-200 ease-in-out lg:relative lg:translate-x-0 print:hidden ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex flex-col h-full">
           <div className="p-6">
             <div className="flex items-center gap-2 mb-8">
               <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">C</div>
               <div>
-                <h1 className="text-xl font-bold text-slate-900 leading-none">CudaBiz</h1>
-                <p className="text-xs text-slate-500 mt-1">Gestão de Acessórios</p>
+                <h1 className="text-xl font-bold text-white leading-none">CudaBiz</h1>
+                <p className="text-xs text-slate-400 mt-1">Gestão de Acessórios</p>
               </div>
             </div>
             <nav className="space-y-1">
               {navItems.map((item) => (
-                <button key={item.id} onClick={() => { setActiveTab(item.id as any); setIsSidebarOpen(false); }} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${activeTab === item.id ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}>
+                <button key={item.id} onClick={() => { setActiveTab(item.id as any); setIsSidebarOpen(false); }} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${activeTab === item.id ? 'bg-indigo-600/20 text-indigo-400' : 'text-slate-400 hover:bg-slate-800 hover:text-white'}`}>
                   <item.icon size={20} /> {item.label}
-                  {item.id === 'stock' && lowStockAlerts.length > 0 && <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-rose-100 text-[10px] font-bold text-rose-600">{lowStockAlerts.length}</span>}
+                  {item.id === 'stock' && lowStockAlerts.length > 0 && <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-rose-900/30 text-[10px] font-bold text-rose-400">{lowStockAlerts.length}</span>}
                 </button>
               ))}
             </nav>
           </div>
-          <div className="mt-auto p-6 border-t border-slate-100">
-            <button onClick={() => { setIsActivated(false); localStorage.removeItem('cudabiz_activated'); }} className="w-full flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all">
+          <div className="mt-auto p-6 border-t border-slate-800">
+            <button onClick={() => { setIsActivated(false); localStorage.removeItem('cudabiz_activated'); }} className="w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-rose-400 hover:bg-rose-900/20 rounded-xl transition-all">
               <LogOut size={20} /> <span className="text-sm font-medium">Sair (Bloquear)</span>
             </button>
           </div>

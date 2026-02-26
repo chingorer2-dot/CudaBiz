@@ -131,33 +131,33 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">Inventário de Stock</h2>
-          <p className="text-slate-500">Gerencie seus acessórios e níveis de stock.</p>
+          <h2 className="text-2xl font-bold text-white">Inventário de Stock</h2>
+          <p className="text-slate-400">Gerencie seus acessórios e níveis de stock.</p>
         </div>
         <button 
           onClick={() => setIsAddModalOpen(true)}
-          className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-semibold shadow-md shadow-indigo-100 hover:bg-indigo-700 transition-colors"
+          className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-semibold shadow-md shadow-indigo-900/20 hover:bg-indigo-700 transition-colors"
         >
           <Plus size={20} />
           Novo Acessório
         </button>
       </div>
 
-      <div className="bg-white p-4 rounded-2xl border border-slate-100 flex flex-col md:flex-row gap-4 items-center">
+      <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex flex-col md:flex-row gap-4 items-center">
         <div className="relative flex-1 w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
           <input 
             type="text" 
             placeholder="Pesquisar por marca, modelo ou tipo..."
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+            className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-slate-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <div className="flex items-center gap-2 w-full md:w-auto">
-          <Filter size={18} className="text-slate-400" />
+          <Filter size={18} className="text-slate-500" />
           <select 
-            className="flex-1 md:flex-none bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 focus:outline-none text-sm"
+            className="flex-1 md:flex-none bg-slate-800 border border-slate-700 text-white rounded-xl py-2 px-3 focus:outline-none text-sm"
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
           >
@@ -167,11 +167,11 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+      <div className="bg-slate-900 rounded-2xl border border-slate-800 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-100">
+              <tr className="bg-slate-800/50 border-b border-slate-800">
                 <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Acessório</th>
                 <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Marca/Modelo/Cor</th>
                 <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Preço (C/V)</th>
@@ -180,10 +180,10 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                 <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Ações</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-800">
               {filteredAccessories.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-12 text-center text-slate-400 italic">
+                  <td colSpan={6} className="px-6 py-12 text-center text-slate-500 italic">
                     Nenhum acessório encontrado.
                   </td>
                 </tr>
@@ -196,33 +196,33 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                   const isLow = acc.quantity <= acc.lowStockThreshold;
 
                   return (
-                    <tr key={acc.id} className="hover:bg-slate-50/50 transition-colors">
+                    <tr key={acc.id} className="hover:bg-slate-800/50 transition-colors">
                       <td className="px-6 py-4">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-900/30 text-indigo-400">
                           {acc.type}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="text-sm font-semibold text-slate-900">{brandName}</div>
+                        <div className="text-sm font-semibold text-white">{brandName}</div>
                         <div className="flex items-center gap-2">
-                           <span className="text-xs text-slate-500">{modelName}</span>
-                           <span className="text-[10px] text-slate-400 bg-slate-50 px-1 rounded border border-slate-100">{modelColor}</span>
+                           <span className="text-xs text-slate-400">{modelName}</span>
+                           <span className="text-[10px] text-slate-500 bg-slate-800 px-1 rounded border border-slate-700">{modelColor}</span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="text-xs text-slate-400">C: {acc.purchasePrice.toFixed(2)}</div>
-                        <div className="text-sm font-bold text-emerald-600">V: {acc.sellingPrice.toFixed(2)}</div>
+                        <div className="text-xs text-slate-500">C: {acc.purchasePrice.toFixed(2)}</div>
+                        <div className="text-sm font-bold text-emerald-400">V: {acc.sellingPrice.toFixed(2)}</div>
                       </td>
-                      <td className="px-6 py-4 text-sm font-bold text-slate-900">
+                      <td className="px-6 py-4 text-sm font-bold text-white">
                         {acc.quantity}
                       </td>
                       <td className="px-6 py-4">
                         {isLow ? (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-rose-50 text-rose-600 border border-rose-100">
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-rose-900/30 text-rose-400 border border-rose-900/50">
                             Stock Baixo
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-50 text-emerald-600 border border-emerald-100">
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-900/30 text-emerald-400 border border-emerald-900/50">
                             Normal
                           </span>
                         )}
@@ -234,7 +234,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                               setSelectedAccessory(acc);
                               setIsEntryModalOpen(true);
                             }}
-                            className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                            className="p-2 text-indigo-400 hover:bg-indigo-900/30 rounded-lg transition-colors"
                             title="Entrada de Stock"
                           >
                             <ArrowUpCircle size={18} />
@@ -244,14 +244,14 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                               setEditAcc(acc);
                               setIsEditModalOpen(true);
                             }}
-                            className="p-2 text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
+                            className="p-2 text-amber-400 hover:bg-amber-900/30 rounded-lg transition-colors"
                             title="Editar Preços"
                           >
                             <Pencil size={18} />
                           </button>
                           <button 
                             onClick={() => deleteAccessory(acc.id)}
-                            className="p-2 text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                            className="p-2 text-rose-400 hover:bg-rose-900/30 rounded-lg transition-colors"
                           >
                             <Trash2 size={18} />
                           </button>
@@ -268,16 +268,16 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
 
       {/* Edit Accessory Modal */}
       {isEditModalOpen && editAcc && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden">
-            <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-slate-900">Editar Acessório</h3>
-              <button onClick={() => setIsEditModalOpen(false)} className="text-slate-400 hover:text-slate-600"><Plus className="rotate-45" size={24} /></button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-slate-900 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-800">
+            <div className="p-6 border-b border-slate-800 flex justify-between items-center">
+              <h3 className="text-xl font-bold text-white">Editar Acessório</h3>
+              <button onClick={() => setIsEditModalOpen(false)} className="text-slate-500 hover:text-slate-300"><Plus className="rotate-45" size={24} /></button>
             </div>
             <form onSubmit={handleEditAccessory} className="p-6 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
-                  <div className="p-3 bg-slate-50 rounded-xl text-xs font-bold text-slate-500 uppercase">
+                  <div className="p-3 bg-slate-800 rounded-xl text-xs font-bold text-slate-500 uppercase">
                     {editAcc.type} - {state.brands.find(b => b.id === editAcc.brandId)?.name} {state.models.find(m => m.id === editAcc.modelId)?.name} ({state.models.find(m => m.id === editAcc.modelId)?.color})
                   </div>
                 </div>
@@ -285,7 +285,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Preço Compra</label>
                   <input 
                     type="number" step="0.01" required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={editAcc.purchasePrice}
                     onChange={(e) => setEditAcc({...editAcc, purchasePrice: parseFloat(e.target.value)})}
                   />
@@ -294,7 +294,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Preço Venda Padrão</label>
                   <input 
                     type="number" step="0.01" required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={editAcc.sellingPrice}
                     onChange={(e) => setEditAcc({...editAcc, sellingPrice: parseFloat(e.target.value)})}
                   />
@@ -303,14 +303,14 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Alerta Stock Baixo</label>
                   <input 
                     type="number" required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={editAcc.lowStockThreshold}
                     onChange={(e) => setEditAcc({...editAcc, lowStockThreshold: parseInt(e.target.value)})}
                   />
                 </div>
               </div>
               <div className="pt-4 flex gap-3">
-                <button type="button" onClick={() => setIsEditModalOpen(false)} className="flex-1 py-3 text-sm font-bold text-slate-600 bg-slate-100 rounded-xl">Cancelar</button>
+                <button type="button" onClick={() => setIsEditModalOpen(false)} className="flex-1 py-3 text-sm font-bold text-slate-400 bg-slate-800 rounded-xl">Cancelar</button>
                 <button type="submit" className="flex-1 py-3 text-sm font-bold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-lg transition-colors">Guardar Alterações</button>
               </div>
             </form>
@@ -320,18 +320,18 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
 
       {/* Add Accessory Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden">
-            <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-slate-900">Adicionar Novo Acessório</h3>
-              <button onClick={() => setIsAddModalOpen(false)} className="text-slate-400 hover:text-slate-600"><Plus className="rotate-45" size={24} /></button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-slate-900 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-800">
+            <div className="p-6 border-b border-slate-800 flex justify-between items-center">
+              <h3 className="text-xl font-bold text-white">Adicionar Novo Acessório</h3>
+              <button onClick={() => setIsAddModalOpen(false)} className="text-slate-500 hover:text-slate-300"><Plus className="rotate-45" size={24} /></button>
             </div>
             <form onSubmit={handleAddAccessory} className="p-6 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2 sm:col-span-1">
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Tipo</label>
                   <select 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={newAcc.type}
                     onChange={(e) => setNewAcc({...newAcc, type: e.target.value})}
                   >
@@ -341,7 +341,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                 <div className="col-span-2 sm:col-span-1">
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Marca</label>
                   <select 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={newAcc.brandId}
                     onChange={(e) => setNewAcc({...newAcc, brandId: e.target.value, modelId: ''})}
                     required
@@ -353,7 +353,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                 <div className="col-span-2">
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Modelo (com Cor)</label>
                   <select 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={newAcc.modelId}
                     onChange={(e) => setNewAcc({...newAcc, modelId: e.target.value})}
                     disabled={!newAcc.brandId}
@@ -369,7 +369,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Preço Compra</label>
                   <input 
                     type="number" step="0.01" required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={newAcc.purchasePrice}
                     onChange={(e) => setNewAcc({...newAcc, purchasePrice: parseFloat(e.target.value)})}
                   />
@@ -378,7 +378,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Preço Venda</label>
                   <input 
                     type="number" step="0.01" required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={newAcc.sellingPrice}
                     onChange={(e) => setNewAcc({...newAcc, sellingPrice: parseFloat(e.target.value)})}
                   />
@@ -387,7 +387,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Qtd Inicial</label>
                   <input 
                     type="number" required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={newAcc.initialQuantity}
                     onChange={(e) => setNewAcc({...newAcc, initialQuantity: parseInt(e.target.value)})}
                   />
@@ -396,14 +396,14 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                   <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Alerta Stock</label>
                   <input 
                     type="number" required
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2.5 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={newAcc.lowStockThreshold}
                     onChange={(e) => setNewAcc({...newAcc, lowStockThreshold: parseInt(e.target.value)})}
                   />
                 </div>
               </div>
               <div className="pt-4 flex gap-3">
-                <button type="button" onClick={() => setIsAddModalOpen(false)} className="flex-1 py-3 text-sm font-bold text-slate-600 bg-slate-100 rounded-xl">Cancelar</button>
+                <button type="button" onClick={() => setIsAddModalOpen(false)} className="flex-1 py-3 text-sm font-bold text-slate-400 bg-slate-800 rounded-xl">Cancelar</button>
                 <button type="submit" className="flex-1 py-3 text-sm font-bold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-lg transition-colors">Guardar Acessório</button>
               </div>
             </form>
@@ -413,11 +413,11 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
 
       {/* Entry Modal */}
       {isEntryModalOpen && selectedAccessory && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
-            <div className="p-6 border-b border-slate-100">
-              <h3 className="text-xl font-bold text-slate-900">Entrada de Stock</h3>
-              <p className="text-xs text-slate-500 mt-1">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-800">
+            <div className="p-6 border-b border-slate-800">
+              <h3 className="text-xl font-bold text-white">Entrada de Stock</h3>
+              <p className="text-xs text-slate-400 mt-1">
                 {selectedAccessory.type} - {state.brands.find(b => b.id === selectedAccessory.brandId)?.name} {state.models.find(m => m.id === selectedAccessory.modelId)?.name} ({state.models.find(m => m.id === selectedAccessory.modelId)?.color})
               </p>
             </div>
@@ -426,7 +426,7 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                 <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Quantidade Adicional</label>
                 <input 
                   type="number" min="1" required
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 outline-none text-lg font-bold"
+                  className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 outline-none text-lg font-bold"
                   value={entryQty}
                   onChange={(e) => {
                     const qty = parseInt(e.target.value);
@@ -439,13 +439,13 @@ const StockManagement: React.FC<StockManagementProps> = ({ state, setState }) =>
                 <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Custo Total (MT)</label>
                 <input 
                   type="number" step="0.01" required
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 outline-none"
                   value={entryCost}
                   onChange={(e) => setEntryCost(parseFloat(e.target.value))}
                 />
               </div>
               <div className="pt-4 flex gap-3">
-                <button type="button" onClick={() => setIsEntryModalOpen(false)} className="flex-1 py-3 text-sm font-bold text-slate-600 bg-slate-100 rounded-xl">Cancelar</button>
+                <button type="button" onClick={() => setIsEntryModalOpen(false)} className="flex-1 py-3 text-sm font-bold text-slate-400 bg-slate-800 rounded-xl">Cancelar</button>
                 <button type="submit" className="flex-1 py-3 text-sm font-bold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-lg transition-colors">Registar Entrada</button>
               </div>
             </form>
